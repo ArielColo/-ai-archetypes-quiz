@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI User Archetypes Quiz (000-111)</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/ArielColo/-ai-archetypes-quiz">
+    <meta property="og:title" content="What type of AI user are you? Archetypes Quiz">
+    <meta property="og:description" content="Discover if you're a Basic User, Dependent Mystic, Engineer Arguer, or the feared Complete Reverse Engineer (111). Quiz based on the Reverse Engagement framework.">
+    <meta property="og:image" content="https://github.com/ArielColo/-ai-archetypes-quiz/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://github.com/ArielColo/-ai-archetypes-quiz">
+    <meta property="twitter:title" content="What type of AI user are you? Archetypes Quiz">
+    <meta property="twitter:description" content="Discover if you're a Basic User, Dependent Mystic, Engineer Arguer, or the feared Complete Reverse Engineer (111).">
+    <meta property="twitter:image" content="https://github.com/ArielColo/-ai-archetypes-quiz/og-image.jpg">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>What type of AI user are you?</h1>
+            <p class="subtitle">Reverse Engagement Archetypes Quiz</p>
+        </header>
+
+        <div id="quiz-section">
+            <div class="question-block">
+                <h3>1. When ChatGPT or Claude gives you an answer:</h3>
+                <label><input type="radio" name="q1" value="0"> I accept it as it comes, I don't care how it works inside</label>
+                <label><input type="radio" name="q1" value="0"> I vaguely know it "predicts text" but I'm not interested in going deeper</label>
+                <label><input type="radio" name="q1" value="1"> I understand it's statistical prediction based on training, not "real thinking"</label>
+            </div>
+
+            <div class="question-block">
+                <h3>2. Could you explain to someone the difference between an LLM and a database?</h3>
+                <label><input type="radio" name="q2" value="0"> No, and honestly I'm not interested</label>
+                <label><input type="radio" name="q2" value="0"> I think so, but I'm not sure about the technical details</label>
+                <label><input type="radio" name="q2" value="1"> Yes, I conceptually understand how language models work</label>
+            </div>
+
+            <div class="question-block">
+                <h3>3. When the AI makes an obvious mistake:</h3>
+                <label><input type="radio" name="q3" value="0"> I'm surprised, I thought it was smarter</label>
+                <label><input type="radio" name="q3" value="0"> I notice it but don't understand why it happened</label>
+                <label><input type="radio" name="q3" value="1"> I recognize it's a predictable architectural limitation</label>
+            </div>
+
+            <div class="question-block">
+                <h3>4. After a long, interesting conversation with the AI:</h3>
+                <label><input type="radio" name="q4" value="0"> I close it and forget about it, it was just a tool</label>
+                <label><input type="radio" name="q4" value="0"> I think about it for a while, but move on to something else</label>
+                <label><input type="radio" name="q4" value="1"> I keep thinking about the conversation, wanting to go deeper</label>
+            </div>
+
+            <div class="question-block">
+                <h3>5. Have you ever gone back to read old conversations with AIs?</h3>
+                <label><input type="radio" name="q5" value="0"> Never, what for?</label>
+                <label><input type="radio" name="q5" value="0"> Sometimes out of curiosity or utility</label>
+                <label><input type="radio" name="q5" value="1"> Yes, several times, to analyze patterns or pick up threads</label>
+            </div>
+
+            <div class="question-block">
+                <h3>6. When the AI says something that seems contradictory or weird to you:</h3>
+                <label><input type="radio" name="q6" value="0"> I ignore it and continue with my task</label>
+                <label><input type="radio" name="q6" value="0"> I notice it but don't insist</label>
+                <label><input type="radio" name="q6" value="1"> My curiosity is piqued and I start asking follow-up questions</label>
+            </div>
+
+            <div class="question-block">
+                <h3>7. If the AI gives you an answer that intuitively "doesn't add up":</h3>
+                <label><input type="radio" name="q7" value="0"> I accept the answer anyway</label>
+                <label><input type="radio" name="q7" value="0"> I ask a clarifying question but if it insists, I let it go</label>
+                <label><input type="radio" name="q7" value="1"> I build a counter-argument step by step until it's clear</label>
+            </div>
+
+            <div class="question-block">
+                <h3>8. In a discussion, could you identify a logical fallacy?</h3>
+                <label><input type="radio" name="q8" value="0"> I wouldn't know how to recognize them</label>
+                <label><input type="radio" name="q8" value="0"> I sense when something "isn't right" but couldn't name it</label>
+                <label><input type="radio" name="q8" value="1"> Yes, I can identify and name common fallacies</label>
+            </div>
+
+            <div class="question-block">
+                <h3>9. When someone gives you a complex explanation to evade your point:</h3>
+                <label><input type="radio" name="q9" value="0"> I get confused and give up</label>
+                <label><input type="radio" name="q9" value="0"> I feel like they're confusing me but don't know how to respond</label>
+                <label><input type="radio" name="q9" value="1"> I detect the evasion and reformulate my question to close the logical trap</label>
+            </div>
+
+            <button id="submit-btn" onclick="calculateResult()">See My Archetype</button>
+        </div>
+
+        <div id="result-section" style="display: none;">
+            <h2 id="result-title"></h2>
+            <img id="result-image" src="" alt="Archetype">
+            <div id="result-description"></div>
+            <a href="https://medium.com/@arielcolomdq/reverse-engagement-and-the-algorithmic-ouroboros-when-ai-bites-its-own-tail-8b80bdaa842b" target="_blank" class="cta-button">Read the full article</a>
+            <button onclick="resetQuiz()" class="reset-button">Take the quiz again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+css /* Reset y fuentes base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    padding: 40px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+h1 {
+    font-size: 2.2em;
+    color: #2d3748;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #718096;
+    font-size: 1.1em;
+}
+
+/* Preguntas */
+.question-block {
+    margin-bottom: 35px;
+    padding: 25px;
+    background: #f7fafc;
+    border-radius: 12px;
+    border-left: 4px solid #667eea;
+}
+
+    .question-block h3 {
+        color: #2d3748;
+        margin-bottom: 15px;
+        font-size: 1.1em;
+    }
+
+    .question-block label {
+        display: block;
+        padding: 12px 15px;
+        margin: 8px 0;
+        background: white;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: 2px solid transparent;
+    }
+
+        .question-block label:hover {
+            background: #edf2f7;
+            border-color: #667eea;
+        }
+
+    .question-block input[type="radio"] {
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+        .question-block input[type="radio"]:checked + label {
+            background: #667eea;
+            color: white;
+        }
+
+/* Botones */
+#submit-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    margin-top: 20px;
+}
+
+    #submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    #submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+/* Sección de Resultados */
+#result-section {
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#result-title {
+    font-size: 2em;
+    color: #2d3748;
+    margin-bottom: 25px;
+}
+
+#result-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 25px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+#result-description {
+    text-align: left;
+    padding: 25px;
+    background: #f7fafc;
+    border-radius: 12px;
+    margin: 25px 0;
+    line-height: 1.8;
+    font-size: 1.05em;
+    color: #4a5568;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    margin: 20px 10px;
+    transition: transform 0.2s ease;
+}
+
+    .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+
+.reset-button {
+    padding: 12px 30px;
+    background: #e2e8f0;
+    color: #4a5568;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 10px;
+    transition: all 0.2s ease;
+}
+
+    .reset-button:hover {
+        background: #cbd5e0;
+    }
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+
+    .question-block {
+        padding: 15px;
+    }
+}
+
+/* Estilo para respuesta seleccionada */
+.question-block label.selected {
+    background: #667eea !important;
+    color: white !important;
+    border-color: #667eea !important;
+}
+
+    .question-block label.selected input[type="radio"] {
+        accent-color: white;
+    }
