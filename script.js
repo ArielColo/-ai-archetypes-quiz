@@ -122,3 +122,56 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// Share functions for social media
+function shareTwitter() {
+    const result = document.getElementById('result-title').textContent;
+    const url = window.location.href;
+    const text = `I took the AI User Archetypes quiz and I am: ${result}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    window.open(twitterUrl, '_blank', 'width=600,height=400');
+}
+
+function shareLinkedIn() {
+    const url = window.location.href;
+    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+    window.open(linkedInUrl, '_blank', 'width=600,height=400');
+}
+
+function shareReddit() {
+    const result = document.getElementById('result-title').textContent;
+    const url = window.location.href;
+    const title = `AI User Archetypes Quiz - My result: ${result}`;
+    const redditUrl = `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+    window.open(redditUrl, '_blank', 'width=800,height=600');
+}
+
+function copyLink() {
+    const url = window.location.href;
+    
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+            alert('Link copied to clipboard!');
+        }).catch(() => {
+            fallbackCopyLink(url);
+        });
+    } else {
+        fallbackCopyLink(url);
+    }
+}
+
+function fallbackCopyLink(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+        document.execCommand('copy');
+        alert('Link copied to clipboard!');
+    } catch (err) {
+        alert('Could not copy link. Please copy it manually: ' + text);
+    }
+    document.body.removeChild(textArea);
+}

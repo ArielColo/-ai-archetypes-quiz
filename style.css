@@ -208,3 +208,78 @@ h1 {
     .question-block label.selected input[type="radio"] {
         accent-color: white;
     }
+
+/* Share Section */
+.share-section {
+    margin: 30px 0;
+    padding: 25px;
+    background: #f7fafc;
+    border-radius: 12px;
+}
+
+.share-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #2d3748;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.share-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+    font-size: 0.95em;
+}
+
+    .share-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+.twitter-btn {
+    background: #000000;
+}
+
+.linkedin-btn {
+    background: #0077b5;
+}
+
+.reddit-btn {
+    background: #ff4500;
+}
+
+.copy-btn {
+    background: #4a5568;
+}
+
+.share-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .share-buttons {
+        flex-direction: column;
+    }
+
+    .share-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
