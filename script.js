@@ -88,6 +88,17 @@ function calculateResult() {
     document.getElementById('result-title').textContent = result.title;
     document.getElementById('result-image').src = result.image;
     document.getElementById('result-description').textContent = result.description;
+
+    // Track resultado en Google Analytics
+if (typeof gtag !== 'undefined') {
+    gtag('event', 'quiz_completed', {
+        'archetype_code': archetypeCode,
+        'archetype_name': result.title,
+        'technical_score': technical,
+        'emotional_score': emotional,
+        'logical_score': logical
+    });
+}
     
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -129,12 +140,31 @@ function shareTwitter() {
     const url = window.location.href;
     const text = `I took the AI User Archetypes quiz and I am: ${result}`;
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+
+    // Track en Analytics
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'share', {
+            'method': 'Twitter',
+            'content_type': 'quiz_result',
+            'item_id': result
+        });
+    }
+
     window.open(twitterUrl, '_blank', 'width=600,height=400');
 }
 
 function shareLinkedIn() {
     const url = window.location.href;
     const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+
+    // PRIMERO: Track
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'share', {
+            'method': 'LinkedIn',
+            'content_type': 'quiz_result'
+        });
+    }
+
     window.open(linkedInUrl, '_blank', 'width=600,height=400');
 }
 
@@ -143,19 +173,38 @@ function shareReddit() {
     const url = window.location.href;
     const title = `AI User Archetypes Quiz - My result: ${result}`;
     const redditUrl = `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+
+       // PRIMERO: Track
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'share', {
+            'method': 'Reddit',
+            'content_type': 'quiz_result'
+        });
+    }
+
     window.open(redditUrl, '_blank', 'width=800,height=600');
 }
 
 function copyLink() {
     const url = window.location.href;
     
+    // Intentar usar la API moderna del portapapeles
     if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(url).then(() => {
-            alert('Link copied to clipboard!');
+            // Track en Analytics DESPUÉS de copiar exitosamente
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'share', {
+                    'method': 'Copy_Link',
+                    'content_type': 'quiz_result'
+                });
+            }
+            alert('¡Link copiado al portapapeles!');
         }).catch(() => {
+            // Fallback si falla
             fallbackCopyLink(url);
         });
     } else {
+        // Fallback para navegadores viejos
         fallbackCopyLink(url);
     }
 }
@@ -169,9 +218,16 @@ function fallbackCopyLink(text) {
     textArea.select();
     try {
         document.execCommand('copy');
-        alert('Link copied to clipboard!');
+        // Track en Analytics después del copy exitoso
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'share', {
+                'method': 'Copy_Link',
+                'content_type': 'quiz_result'
+            });
+        }
+        alert('¡Link copiado al portapapeles!');
     } catch (err) {
-        alert('Could not copy link. Please copy it manually: ' + text);
+        alert('No se pudo copiar el link. Por favor copialo manualmente: ' + text);
     }
     document.body.removeChild(textArea);
 }
